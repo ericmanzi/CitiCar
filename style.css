@@ -1,0 +1,136 @@
+/* confluence blue: 	background-color:rgba(32,80,129,1); darker:21,55,88;  */
+
+html {
+	background-image:url("images/hero-blur.jpg");
+	background-attachment:fixed;
+	background-position:center;
+	background-size:cover;
+	background-color:rgb(0,0,0);
+	overflow:hidden;
+	margin:0px;
+	padding:0px }
+
+body {
+	height: 100%;
+	padding:0px;
+}
+
+.header {
+	height: 80px;
+	width:100%;
+	position: relative;
+	top: 0px;
+	border-bottom: solid #428BCA 1px;
+	background-color:rgba(0,0,0,0.2);
+}
+
+@font-face {
+	font-family: trench;
+	src: url("assets/trench100free.otf");
+}
+
+#logo {
+	text-align: center;
+	top: -5%;
+	position: relative;
+	width: 100%;
+	font-family: trench;
+	color: white;
+	font-size: 6em;
+	font-weight: 100;
+}
+
+#menu {
+	text-align: left;
+	top: 30%;
+	width:25%;
+	padding-left: 40px;
+	position: absolute;
+	font-family: trench;
+	color: white;
+	font-size: 2em;
+	font-weight: 100;
+}
+
+#login {
+	text-align: center;
+	top: 30%;
+	position: fixed;
+	right: 40px;
+	position: absolute;
+	font-family: trench;
+	color: white;
+	font-size: 2em;
+	font-weight: 100;
+	border: solid #428BCA 2px;
+	border-radius: 0px;
+	background-color: rgba(0,0,0,0.5);
+	width: 15%;
+}
+
+#signup {
+	text-align: center;
+	position: relative;
+	color:white;
+	font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+	font-weight: 100;
+	line-height: 10px;
+	padding-top: 100px;
+}
+#title {
+	font-size: 1.75em;
+}
+
+#subtitle {
+	font-size: 1.1em;
+}
+
+#signup-btn {
+	font-family: Futusra, 'Trebuchet MS', Arial, sans-serif;
+	font-size: 2em;
+	background-color: #2e618d;
+	color: white;
+	width: 30%;
+	border: solid 0px;
+	border-radius: 5px;
+}
+
+#overlay {
+	margin-top: 100px;
+	height: 3000px;
+	background-color: rgba(0,0,0,0.7);
+	padding: 0px;
+	width: 50%;
+    margin: 0 auto;
+}
+
+#signInText {
+	background: #fff;
+	padding:10px; 
+	position:relative; 
+	top:-10px; 
+	left: 20px
+}
+
+/*p {
+	background: #fff;
+    display:inline-block;
+    padding-right: 1em;
+    line-height: 1.2em;
+}
+.signInText {
+	background: #fff; 
+	padding:10px; 
+	position:relative; 
+	top:-10px; 
+	left: 20px
+}
+
+p+hr {
+    margin-top: -0.6em;
+}
+*/
+
+
+
+
