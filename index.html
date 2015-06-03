@@ -13,26 +13,33 @@
     
 
 <!-- scripts -->
+
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
 <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
 <script type="text/javascript" src="app.js"></script>
 
 <!-- Stylesheets -->
-<link rel="stylesheet" type="text/css" href="style.css">
-  
+<!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">-->
+ <link rel="stylesheet" type="text/css" href="style.css">
+
+
+
+
+
 <body>
 
   <div class="header">
-    <div id="menu"><img src="images/menu.png" height="20px" width="30px">&nbsp&nbsp&nbspMENU</div>
-    <div id="logo">CitiCar</div>
-    <button id="login">LOG IN</button>
+    <div class="menu"><img src="images/menu.png" height="20px" width="30px">&nbsp&nbsp&nbspMENU</div>
+    <div class="logo">CitiCar</div>
+    <button class="login mybutton" type="submit" onclick="location.href='login.html'">LOG IN</button>
   </div>
 
   <div id="signup">
-    <p id="title">KIGALI'S FIRST CAR SHARING SERVICE</p>
-    <p id="subtitle">NEED A CAR FOR A FEW HOURS TO DRIVE AROUND KIGALI?</p>
+    <p class="title">KIGALI'S FIRST CAR SHARING SERVICE</p>
+    <p class="subtitle">NEED A CAR FOR A FEW HOURS TO DRIVE AROUND KIGALI?</p>
     <br> 
-    <button id="signup-btn">SIGN UP</button>
+    <button class="signup-btn mybutton" id="sign-up" type='submit' onclick="location.href='signup.html'">SIGN UP</button>
 
   </div>
 

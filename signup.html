@@ -15,39 +15,47 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
 <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
-<script type="text/javascript" async="" src="app.js">
-</script>
+<script type="text/javascript" src="app.js"></script>
+<script type="text/javascript" src="signup.js"></script>
 
 <!-- Stylesheets -->
 <link rel="stylesheet" type="text/css" href="style.css">
-
-
-
+<!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> -->
 
 <body>
    
 
   <div id="overlay-behind">
-  <br>
     <div id="overlay"> 
       <div class="header login-header">
-        <div class="logo" >CitiCar</div>
+        <div class="logo">CitiCar</div>
       </div>
+      <div class="div1"><span class="span1">SIGN UP</span></div>
+      
       <br>
-      <div class="div1"><span class="span1">SIGN IN</span></div>
-      <br>
-      <button class="btn--facebook mybutton" type="submit">CONNECT WITH FACEBOOK</button>
+      <button class="btn--facebook mybutton" type="submit">SIGN UP WITH FACEBOOK</button>
       <br><br>
       <div class="div1" style="font-size:1.0em;"><span class="span1 span2">or use email</span></div>
       <p class="sign-in-lbl">EMAIL
         <input type="email" id="email" class="myinput" placeholder="Your Email Address"></input>
       </p>
       
-      <p class="sign-in-lbl">PASSWORD
-        <input type="password" id="password" class="myinput" placeholder="Your Password"></input>
+      <p class="sign-in-lbl">NEW PASSWORD
+        <input type="password" id="password" class="myinput" placeholder="New Password"></input>
+      </p>
+      <p class="sign-in-lbl">CONFIRM PASSWORD
+        <input type="password" id="confirm_password" class="myinput" placeholder="Confirm Password"></input>
+      </p>
+      <p class="sign-in-lbl">NAME<br>
+        <input type="text" id="first_name" class="myinput name" placeholder="First Name"></input>
+        <input type="text" id="last_name" class="myinput name" placeholder="Last Name"></input>
+      </p>
+      <p class="sign-in-lbl">MOBILE NUMBER
+        <input type="tel" id="mobile_number" class="myinput" placeholder="+250 781 23 45 67"></input>
       </p>
       <br>
-      <button class="signup-btn signin-btn mybutton" id="login-btn" type="submit">SIGN IN</button>
+      <button class="signup-btn signin-btn mybutton" type="submit" id="create_account">CREATE ACCOUNT</button>
+      <br>
     </div>
   </div>
 
