@@ -1,6 +1,6 @@
 /* confluence blue: 	background-color:rgba(32,80,129,1); darker:21,55,88;  */
 
-html {
+.cover {
 	background-image:url("images/hero-blur.jpg");
 	background-attachment:fixed;
 	background-position:center;
@@ -13,6 +13,8 @@ html {
 body {
 	height: 100%;
 	padding:0px;
+	-webkit-font-smoothing: antialiased;
+	font-weight: 200;
 }
 
 .header {
@@ -20,7 +22,6 @@ body {
 	width:100%;
 	position: relative;
 	top: 0px;
-	border-bottom: solid #428BCA 1px;
 }
 
 @font-face {
@@ -37,18 +38,28 @@ body {
 	color: white;
 	font-size: 6em;
 	font-weight: 100;
+	background-color: rgba(0,0,0,0.6);
+}
+
+.logo-line {
+    border-bottom: solid #428BCA 1px;
 }
 
 .menu {
-	text-align: left;
 	top: 30%;
-	width:25%;
-	padding-left: 40px;
+	width:15%;
+	margin-left: 40px;
 	position: absolute;
 	font-family: Futura, 'Trebuchet MS', Arial, sans-serif;
 	color: white;
 	font-size: 1.3em;
 	font-weight: 100;
+	z-index: 1000;
+    border: solid #f7f7f7 1px;
+	border-radius: 5px;
+	background-color: transparent;
+	-webkit-filter: brightness(70%);
+
 }
 
 .login {
@@ -58,12 +69,15 @@ body {
 	right: 40px;
 	position: absolute;
 	font-family: Futura, 'Trebuchet MS', Arial, sans-serif;
-	color: white;
+	color: #f7f7f7;
 	font-size: 1.3em;
 	font-weight: 100;
-	border: solid #428BCA 2px;
-	border-radius: 0px;
-	background-color: rgba(0,0,0,0.5);
+	/*border: solid #428BCA 2px;*/
+	border: solid #f7f7f7 1px;
+	border-radius: 5px;
+	background-color: transparent;
+	-webkit-filter: brightness(70%);
+
 	width: 15%;
 }
 

@@ -38,3 +38,39 @@ $(document).on("click", "#login-btn", function() {
 	  }
 	});
 });
+
+$(document).on("click", "#login-btn", function() {
+	var email = $("#email").val();
+	var pass = $("#password").val();
+	var username = email.split("@")[0];
+
+	Parse.User.logIn(username, pass, {
+	  success: function(user) {
+	    // Do stuff after successful login.
+	    alert("passed");
+	    window.location = './index.html';
+	  },
+	  error: function(user, error) {
+	    // The login failed. Check error to see why.
+	    alert("The email/password combination you entered does not belong to any account.");
+	  }
+	});
+});
+
+$(document).on("click", "#menu-btn", function() {
+	var email = $("#email").val();
+	var pass = $("#password").val();
+	var username = email.split("@")[0];
+
+	Parse.User.logIn(username, pass, {
+	  success: function(user) {
+	    // Do stuff after successful login.
+	    alert("passed");
+	    window.location = './index.html';
+	  },
+	  error: function(user, error) {
+	    // The login failed. Check error to see why.
+	    alert("The email/password combination you entered does not belong to any account.");
+	  }
+	});
+});
