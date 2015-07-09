@@ -34,28 +34,7 @@ function setupFacebook() {
 		js.src = "//connect.facebook.net/en_US/sdk.js";
 		fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));
-    //TODO: fix this
-    FB.getLoginStatus(function(response) {
-        if (response.status === 'connected') {
-            // the user is logged in and has authenticated your
-            // app, and response.authResponse supplies
-            // the user's ID, a valid access token, a signed
-            // request, and the time the access token
-            // and signed request each expire
-            var uid = response.authResponse.userID;
-            var accessToken = response.authResponse.accessToken;
-            alert('User already logged in');
 
-        } else if (response.status === 'not_authorized') {
-            // the user is logged in to Facebook,
-            // but has not authenticated your app
-            alert('Logged in but not authenicated');
-            //this is what we want
-        } else {
-            // the user isn't logged in to Facebook.
-            alert('Not logged in');
-        }
-    });
 }
 
 $(document).ready(function(){
@@ -68,7 +47,6 @@ $(document).ready(function(){
 });
 
 $(document).on("click", ".login-facebook-btn", function() {
-	alert('facebook login pressed');
 	Parse.FacebookUtils.logIn(null, {
 		success: function(user) {
 			if (!user.existed()) {
@@ -83,25 +61,6 @@ $(document).on("click", ".login-facebook-btn", function() {
 			alert("User cancelled the Facebook login or did not fully authorize.");
 		}
 	});
-
-
-	/*$(document).on('click', '.fb', function() {
-		$("#status").html("Clicked login");
-		Parse.FacebookUtils.logIn(null, {
-			success: function(user) {
-				if (!user.existed()) {
-                    alert("User signed up and logged in through Facebook!");
-				} else {
-					alert("User logged in through Facebook!");
-				}
-                sessionStorage.setItem("currentUser", JSON.stringify(user));
-
-            },
-			error: function(user, error) {
-				alert("User cancelled the Facebook login or did not fully authorize.");
-			}
-		});
-	});*/
 });
 
 $(document).on("click", "#login-btn", function() {
