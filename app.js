@@ -46,7 +46,7 @@ $(document).ready(function(){
 });
 
 $(document).on("click", ".login-facebook-btn", function() {
-
+	alert('facebook login pressed');
 	Parse.FacebookUtils.logIn(null, {
 		success: function(user) {
 			if (!user.existed()) {
