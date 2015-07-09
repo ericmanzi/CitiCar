@@ -56,7 +56,6 @@ function setupFacebook() {
             alert('Not logged in');
         }
     });
-    alert(Parse.FacebookUtils.getLoginStatus);
 }
 
 $(document).ready(function(){
