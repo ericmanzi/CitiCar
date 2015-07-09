@@ -45,7 +45,7 @@ $(document).ready(function(){
 
 });
 
-$(document).on("click", "#login-facebook-btn", function() {
+$(document).on("click", ".login-facebook-btn", function() {
 
 	Parse.FacebookUtils.logIn(null, {
 		success: function(user) {
