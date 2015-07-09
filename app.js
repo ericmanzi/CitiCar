@@ -21,6 +21,7 @@ function setupFacebook() {
 		Parse.FacebookUtils.init({
 			appId      : '1620498488165422',
 			xfbml      : true,
+			status      : true,
 			cookie      : true,
 			version    : 'v2.3'
 		});
@@ -34,7 +35,7 @@ function setupFacebook() {
 		fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));
     //TODO: fix this
-    Parse.FacebookUtils.getLoginStatus(function(response) {
+    FB.getLoginStatus(function(response) {
         if (response.status === 'connected') {
             // the user is logged in and has authenticated your
             // app, and response.authResponse supplies
