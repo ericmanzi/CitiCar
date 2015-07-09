@@ -16,29 +16,15 @@ function showPosition(position) {
 	console.log("Latitude: " + lat + "Longitude: " + long);
 }
 
-$(document).ready(function(){
-	Parse.initialize("MJ7veguTqdNXV8bF0x5IB6fAItT3gK22B5mrtzxD", "LrbtNhaspWUt86vml7TFS6gn3XSsezNjr8NLst4p");
-
-	getLocation();
-
-});
-
-$(document).on("click", "#login-btn", function() {
-	var email = $("#email").val();
-	var pass = $("#password").val();
-	var username = email.split("@")[0];
-});
-
-$(document).on("click", "#login-facebook-btn", function() {
-
-	$('.fb').prop('disabled', true);
+function setupFacebook() {
 	window.fbAsyncInit = function() {
 		Parse.FacebookUtils.init({
 			appId      : '1620498488165422',
 			xfbml      : true,
+			cookie      : true,
+			status      : true,
 			version    : 'v2.3'
 		});
-		$(".fb").prop('disabled', false);
 	};
 
 	(function(d, s, id){
@@ -48,8 +34,36 @@ $(document).on("click", "#login-facebook-btn", function() {
 		js.src = "//connect.facebook.net/en_US/sdk.js";
 		fjs.parentNode.insertBefore(js, fjs);
 	}(document, 'script', 'facebook-jssdk'));
+}
 
-	$(document).on('click', '.fb', function() {
+$(document).ready(function(){
+	Parse.initialize("MJ7veguTqdNXV8bF0x5IB6fAItT3gK22B5mrtzxD", "LrbtNhaspWUt86vml7TFS6gn3XSsezNjr8NLst4p");
+
+	getLocation();
+
+	setupFacebook();
+
+});
+
+$(document).on("click", "#login-facebook-btn", function() {
+
+	Parse.FacebookUtils.logIn(null, {
+		success: function(user) {
+			if (!user.existed()) {
+				alert("User signed up and logged in through Facebook!");
+			} else {
+				alert("User logged in through Facebook!");
+			}
+			sessionStorage.setItem("currentUser", JSON.stringify(user));
+
+		},
+		error: function(user, error) {
+			alert("User cancelled the Facebook login or did not fully authorize.");
+		}
+	});
+
+
+	/*$(document).on('click', '.fb', function() {
 		$("#status").html("Clicked login");
 		Parse.FacebookUtils.logIn(null, {
 			success: function(user) {
@@ -65,7 +79,7 @@ $(document).on("click", "#login-facebook-btn", function() {
 				alert("User cancelled the Facebook login or did not fully authorize.");
 			}
 		});
-	});
+	});*/
 });
 
 $(document).on("click", "#login-btn", function() {

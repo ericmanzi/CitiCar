@@ -2,7 +2,7 @@ body {
     background-color: #EBEBEB;
     font-weight: 200;
     text-shadow: none;
-    overflow: ;
+    overflow: auto;
 }
 
 @font-face {
@@ -41,6 +41,7 @@ body {
 
 .squeeze { width: auto; }
 .full-width { width: 100%; }
+.half-width { width: 50%; }
 .tab-selected {
     background-color: #EBEBEB;
     color: #292c2f;
