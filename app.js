@@ -55,6 +55,8 @@ $(document).on("click", ".login-facebook-btn", function() {
 				alert("User logged in through Facebook!");
 			}
 			sessionStorage.setItem("currentUser", JSON.stringify(user));
+            alert(JSON.stringify(user));
+            //window.location = './profile/profile.html';
 
 		},
 		error: function(user, error) {
