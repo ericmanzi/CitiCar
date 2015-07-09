@@ -52,10 +52,9 @@ $(document).on("click", ".login-facebook-btn", function() {
 			if (!user.existed()) {
 				alert("User signed up and logged in through Facebook!");
 			} else {
-				alert("User logged in through Facebook!");
+				alert("User logged in through Facebook! "+JSON.stringify(user));
 			}
 			sessionStorage.setItem("currentUser", JSON.stringify(user));
-            alert(JSON.stringify(user));
             //window.location = './profile/profile.html';
 
 		},
