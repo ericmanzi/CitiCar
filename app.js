@@ -47,14 +47,18 @@ $(document).ready(function(){
 });
 
 $(document).on("click", ".login-facebook-btn", function() {
-	Parse.FacebookUtils.logIn("public_profile,email", {
+	Parse.FacebookUtils.logIn(["public_profile","email"], {
 		success: function(user) {
 			if (!user.existed()) {
 				alert("User signed up and logged in through Facebook!");
 			} else {
-				alert("User logged in through Facebook! "+JSON.stringify(user));
+                var currentUser = Parse.User.current();
+				alert("User logged in through Facebook! "
+                    +JSON.stringify(user)+" currentUser:"+currentUser);
+
 			}
 			sessionStorage.setItem("currentUser", JSON.stringify(user));
+
             //window.location = './profile/profile.html';
 
 		},
