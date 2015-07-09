@@ -53,6 +53,7 @@ app.controller('ProfileCtrl', function() {
     self.logOut = function () {
         sessionStorage.removeItem('currentUser');
         window.location = "../index.html";
+        Parse.User.logOut();
     };
 
     self.scrollToDiv = function(id) {
