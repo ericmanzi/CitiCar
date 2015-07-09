@@ -42,7 +42,7 @@ body {
 }
 
 .logo-line {
-    border-bottom: solid #428BCA 1px;
+	border-bottom: solid #428BCA 1px;
 }
 
 .menu {
@@ -55,7 +55,7 @@ body {
 	font-size: 1.3em;
 	font-weight: 100;
 	z-index: 1000;
-    border: solid #f7f7f7 1px;
+	border: solid #f7f7f7 1px;
 	border-radius: 5px;
 	background-color: transparent;
 	-webkit-filter: brightness(70%);
@@ -90,6 +90,7 @@ body {
 	line-height: 10px;
 	padding-top: 20px;
 }
+
 .title {
 	font-size: 1.75em;
 }
@@ -117,10 +118,9 @@ body {
 #overlay {
 	margin-top: 100px;
 	padding: 0px;
-	height:140%;
 	width: 30%;
-    margin: 0 auto;
-    overflow:scroll;
+	margin: 0 auto;
+	overflow:auto;
 }
 
 #overlay-behind {
@@ -129,17 +129,17 @@ body {
 	background-color: rgba(0,0,0,0.7);
 	padding: 0px;
 	width: 120%;
-    margin: 0 auto;
-    margin-left: -100px;
-    margin-top: 0px;
-    overflow:scroll;
+	margin: 0 auto;
+	margin-left: -100px;
+	margin-top: 0px;
+	overflow:auto;
 }
 
 #signInText {
 	background: #fff;
-	padding:10px; 
-	position:relative; 
-	top:-10px; 
+	padding:10px;
+	position:relative;
+	top:-10px;
 	left: 20px
 }
 
@@ -151,73 +151,76 @@ body {
 
 /*  SIGN IN HR */
 .div1 {
-    text-align: center;
-    position: relative;
-    color:white;
+	text-align: center;
+	position: relative;
+	color:white;
 	font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
 	font-size: 1.4em;
 	font-weight: 100;
 
 }
 .span1 {
-    display: inline-block;   
-    color:white; 
+	display: inline-block;
+	color:white;
 }
 .span1:before,
 .span1:after {
-    border-top: 1px solid gray;
-    display: block;
-    height: 1px;
-    content: " ";
-    width: 36%;
-    position: absolute;
-    left: 0;
-    top: 0.6em;
+	border-top: 1px solid gray;
+	display: block;
+	height: 1px;
+	content: " ";
+	width: 36%;
+	position: absolute;
+	left: 0;
+	top: 0.6em;
 }
 .span1:after {
-   right: 0;  
-   left: auto; 
+	right: 0;
+	left: auto;
 }
 
 
 .btn--facebook {
-  border-color: #5d7eb6;
-  background-color: #45619D;
-  color:white;
-  height: 57px;
-  padding-top: 0px;
-  background-size: 100% 100%;
-  font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
-  font-size: 1.2em;
-  text-align: center;
-  width: 100%;
-  border-radius: 5px;
-  background-image: url(images/facebook_f.png);
-  background-position: 25px 0px;
-  background-size: 38px 57px;
-  background-repeat: no-repeat;
+	border-color: #5d7eb6;
+	background-color: #45619D;
+	color:white;
+	height: 57px;
+	padding-top: 0px;
+	background-size: 100% 100%;
+	font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
+	font-size: 1.2em;
+	text-align: center;
+	width: 100%;
+	border-radius: 5px;
+	background-image: url(images/facebook_f.png);
+	background-position: 25px 0px;
+	background-size: 38px 57px;
+	background-repeat: no-repeat;
 }
 
 .sign-in-lbl {
 	font-family: 'Century Gothic', CenturyGothic, AppleGothic, sans-serif;
-  	font-size: 0.9em;
-  	color: #B3B3BB;
-  	line-height: 1.9em;
+	font-size: 0.9em;
+	color: #B3B3BB;
+	line-height: 1.9em;
 }
 
 .myinput {
-	width: 95%;
+	width: 96%;
 	height: 20px;
 	border-radius: 5px;
 	font-size: 1em;
 	padding: 10px;
+	border: none;
+	box-shadow: none;
 }
-
+.mybutton {
+	box-shadow: none;
+}
 .mybutton:hover {
 	cursor: pointer;
 	-webkit-filter: brightness(120%);
 }
 
-.name {
-	width:43%;
-}
+.myinput.name { width:43%; }
+#last_name.myinput.name { float: right; }

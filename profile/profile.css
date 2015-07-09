@@ -1,3 +1,10 @@
+body {
+    background-color: #EBEBEB;
+    font-weight: 200;
+    text-shadow: none;
+
+}
+
 .profileHeaderContainer {
     float: left;
     width: 100%;
@@ -6,16 +13,14 @@
 }
 
 .profileHeader {
-      height: auto;
-      width: 100%;
-      height: 80px;
-      min-height: 80px;
-      z-index: 1000;
-      align-items: stretch;
-      text-shadow: none;
-      line-height: 300%;
-      font-weight: 200;
-      font-family: TitilliumText, Helvetica;
+    height: auto;
+    width: 100%;
+    min-height: 80px;
+    z-index: 1000;
+    align-items: stretch;
+    text-shadow: none;
+    line-height: 300%;
+    font-family: TitilliumText, Helvetica;
 }
 
 .headerLink {
@@ -23,7 +28,7 @@
     order: 3;
     cursor: pointer;
     padding: 15px;
-    font-size: 1.4em;
+    font-size: 1.6em;
     z-index: 1000;
     align-items: stretch;
     text-shadow: none;
@@ -36,9 +41,10 @@
 
 .account {
     color: #aaabb1;
+    font-size: 0.8em;
     position: absolute;
     top: 0px;
-    right: 30px;
+    right: 0px;
     width: 15%;
     line-height: 300%;
     background-color: #2B2F3E;
@@ -75,14 +81,21 @@ a { text-decoration: none; color: #aaabb1; }
 a:hover { text-decoration: none; color: #FFFFFF; }
 a:visited { text-decoration: none; }
 
-
 .logo-profile {
-    	text-align: center;
-    	font-family: trench;
-    	color: white;
-    	font-size: 4em;
-    	font-weight: 100;
+    text-align: center;
+    font-family: trench;
+    color: white;
+    font-size: 4.5em;
+    font-weight: 100;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 18%;
 }
-.higher-line {
-    line-height: 200%;
+.higher-line { line-height: 200%; }
+
+.panel {
+    margin-top: 40px;
+    font-size: large;
+    font-family: TitilliumText, Helvetica, sans-serif;
 }
