@@ -22,7 +22,6 @@ function setupFacebook() {
 			appId      : '1620498488165422',
 			xfbml      : true,
 			cookie      : true,
-			status      : true,
 			version    : 'v2.3'
 		});
 	};
@@ -101,11 +100,6 @@ $(document).on("click", "#login-btn", function() {
 		}
 	});
 });
-
-$(document).on("click", "#menu-btn", function() {
-	// do nothing
-});
-
 
 $(document).on('click', '#create_account', function() {
 
