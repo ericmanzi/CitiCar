@@ -79,7 +79,6 @@ $(document).on("click", "#login-btn", function() {
             user.set("latitude", lat);
             user.set("longitude", long);
             sessionStorage.setItem("currentUser", JSON.stringify(user));
-			alert("passed");
 			window.location = './profile/profile.html';
 		},
 		error: function(user, error) {
