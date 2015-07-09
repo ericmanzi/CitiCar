@@ -56,9 +56,10 @@ body {
 	font-weight: 100;
 	z-index: 1000;
 	border: solid #f7f7f7 1px;
-	border-radius: 5px;
+	border-radius: 15px;
 	background-color: transparent;
 	-webkit-filter: brightness(70%);
+	-moz-filter: brightness(70%);
 
 }
 
@@ -74,10 +75,10 @@ body {
 	font-weight: 100;
 	/*border: solid #428BCA 2px;*/
 	border: solid #f7f7f7 1px;
-	border-radius: 5px;
+	border-radius: 15px;
 	background-color: transparent;
 	-webkit-filter: brightness(70%);
-
+	-moz-filter: brightness(70%);
 	width: 15%;
 }
 
@@ -220,6 +221,7 @@ body {
 .mybutton:hover {
 	cursor: pointer;
 	-webkit-filter: brightness(120%);
+	-moz-filter: brightness(120%);
 }
 
 .myinput.name { width:43%; }
