@@ -52,14 +52,24 @@ $(document).on("click", ".login-facebook-btn", function() {
 			if (!user.existed()) {
 				alert("User signed up and logged in through Facebook!");
 			} else {
-                var currentUser = Parse.User.current();
 				alert("User logged in through Facebook! "
-                    +JSON.stringify(user)+" currentUser:"+currentUser);
-
+                    +JSON.stringify(user));
 			}
-			sessionStorage.setItem("currentUser", JSON.stringify(user));
 
-            //window.location = './profile/profile.html';
+            var userId = user.authData.id;
+            var access_token = user.authData.access_token;
+
+            var apiUrl = "https://graph.facebook.com/v2.3/"+
+                userId+"?access-token="+access_token+"callback=?";
+            $.getJSON( apiUrl, function( data ) {
+                var fbUser = {};
+                fbUser.full_name = data.name;
+                fbUser.email = data.email;
+                fbUser.username = email.split('@')[0];
+                sessionStorage.setItem("currentUser", JSON.stringify(fbUser));
+                window.location = './profile/profile.html';
+
+            });
 
 		},
 		error: function(user, error) {
