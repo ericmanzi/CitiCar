@@ -56,6 +56,7 @@ $(document).on("click", ".login-facebook-btn", function() {
                     +JSON.stringify(user));
 			}
 
+            /*
             var userId = user.authData.id;
             var access_token = user.authData.access_token;
 
@@ -70,6 +71,7 @@ $(document).on("click", ".login-facebook-btn", function() {
                 window.location = './profile/profile.html';
 
             });
+            */
 
 		},
 		error: function(user, error) {
