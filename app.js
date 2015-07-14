@@ -79,7 +79,7 @@ function setupFacebook() {
                     sessionStorage.setItem("currentUser", JSON.stringify(fbUser));
                     window.location = './profile/profile.html';
 
-                }, onLoadJSONP);
+                });
             }
         });
 	};
@@ -126,7 +126,7 @@ $(document).on("click", ".login-facebook-btn", function() {
                 sessionStorage.setItem("currentUser", JSON.stringify(fbUser));
                 window.location = './profile/profile.html';
 
-            }, onLoadJSONP);
+            });
 
 		},
 		error: function(user, error) {
