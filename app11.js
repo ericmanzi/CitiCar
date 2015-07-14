@@ -25,6 +25,15 @@ function setupFacebook() {
 			cookie      : true,
 			version    : 'v2.3'
 		});
+
+        // Additional init code here
+        FB.getLoginStatus(function(response) {
+            if (response.status === 'connected') {
+                // user logged in and linked to app
+                // handle this case HERE
+                alert("User logged in and connected");
+            }
+        });
 	};
 
 	(function(d, s, id){
