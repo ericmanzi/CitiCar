@@ -68,18 +68,18 @@ function setupFacebook() {
                 // handle this case HERE
                 var uid = response.authResponse.userID;
                 var accessToken = response.authResponse.accessToken;
-                var apiUrl = "https://graph.facebook.com/v2.3/"+
-                    uid+"?access-token="+accessToken+"?callback=?";
-                alert("User logged in and connected. getting "+apiUrl);
-                $.getJSON( apiUrl, function( data ) {
-                    var fbUser = {};
-                    fbUser.full_name = data.name;
-                    fbUser.email = data.email;
-                    fbUser.username = email.split('@|\\')[0];
-                    sessionStorage.setItem("currentUser", JSON.stringify(fbUser));
-                    window.location = './profile/profile.html';
-
-                });
+                //var apiUrl = "https://graph.facebook.com/v2.3/"+
+                //    uid+"?access-token="+accessToken+"?callback=?";
+                alert("User logged in and connected. UserID: "+" Access token: "+accessToken);
+                //$.getJSON( apiUrl, function( data ) {
+                //    var fbUser = {};
+                //    fbUser.full_name = data.name;
+                //    fbUser.email = data.email;
+                //    fbUser.username = email.split('@|\\')[0];
+                //    sessionStorage.setItem("currentUser", JSON.stringify(fbUser));
+                //    window.location = './profile/profile.html';
+                //
+                //});
             }
         });
 	};
@@ -116,8 +116,10 @@ $(document).on("click", ".login-facebook-btn", function() {
             var userId = user.authData.id;
             var access_token = user.authData.access_token;
 
+
             var apiUrl = "https://graph.facebook.com/v2.3/"+
-                userId+"?access-token="+access_token+"?callback=?";
+                userId+"?access-token="+access_token;
+            alert("getting "+apiUrl);
             $.getJSON( apiUrl, function( data ) {
                 var fbUser = {};
                 fbUser.full_name = data.name;
@@ -126,7 +128,7 @@ $(document).on("click", ".login-facebook-btn", function() {
                 sessionStorage.setItem("currentUser", JSON.stringify(fbUser));
                 window.location = './profile/profile.html';
 
-            });
+            }, 'jsonp');
 
 		},
 		error: function(user, error) {
