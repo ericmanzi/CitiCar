@@ -26,7 +26,7 @@ app.controller('ProfileCtrl', function() {
     self.return_time = 0.0;
 
     if (self.user===undefined || self.user===null) {
-        window.location = "../login.html";
+        window.location = "../login.html?123";
     } else {
         self.currentView = "reserve";
     }
