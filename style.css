@@ -111,6 +111,7 @@ body {
 	width: 40%;
 	border: solid 0px;
 	border-radius: 5px;
+	margin-bottom: 20px;
 }
 .signup-btn.signin-btn {
 	width: 100%;

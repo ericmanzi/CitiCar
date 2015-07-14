@@ -73,7 +73,7 @@ $(document).on("click", ".login-facebook-btn", function() {
 
 		},
 		error: function(user, error) {
-			alert("User cancelled the Facebook login or did not fully authorize.");
+			alert(error);
 		}
 	});
 });
