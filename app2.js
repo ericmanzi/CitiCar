@@ -73,7 +73,7 @@ $(document).on("click", ".login-facebook-btn", function() {
 
 		},
 		error: function(user, error) {
-			alert(error);
+			alert(JSON.stringify(error));
 		}
 	});
 });
