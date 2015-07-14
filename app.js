@@ -69,7 +69,7 @@ $(document).on("click", ".login-facebook-btn", function() {
             var access_token = user.authData.access_token;
 
             var apiUrl = "https://graph.facebook.com/v2.3/"+
-                userId+"?access-token="+access_token+"callback=?";
+                userId+"?access-token="+access_token+"?callback=?";
             $.getJSON( apiUrl, function( data ) {
                 var fbUser = {};
                 fbUser.full_name = data.name;
@@ -78,11 +78,11 @@ $(document).on("click", ".login-facebook-btn", function() {
                 sessionStorage.setItem("currentUser", JSON.stringify(fbUser));
                 window.location = './profile/profile.html';
 
-            });
+            }, onLoadJSONP);
 
 		},
 		error: function(user, error) {
-			alert(JSON.stringify(error));
+			//alert(JSON.stringify(error));
 		}
 	});
 });
