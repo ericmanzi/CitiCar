@@ -1,6 +1,41 @@
 var lat=0.0;
 var long=0.0;
 
+//ALLOW CROSS ORIGIN REQUESTS
+jQuery.support.cors = true;
+$.ajaxTransport("+*", function( options, originalOptions, jqXHR ) {
+    if(jQuery.browser.msie && window.XDomainRequest) {
+        var xdr;
+        return {
+            send: function( headers, completeCallback ) {
+                // Use Microsoft XDR
+                xdr = new XDomainRequest();
+                xdr.open("get", options.url);
+                xdr.onload = function() {
+                    if(this.contentType.match(/\/xml/)){
+                        var dom = new ActiveXObject("Microsoft.XMLDOM");
+                        dom.async = false;
+                        dom.loadXML(this.responseText);
+                        completeCallback(200, "success", [dom]);
+                    }else{
+                        completeCallback(200, "success", [this.responseText]);
+                    }
+                };
+                xdr.ontimeout = function(){
+                    completeCallback(408, "error", ["The request timed out."]);
+                };
+                xdr.onerror = function(){
+                    completeCallback(404, "error", ["The requested resource could not be found."]);
+                };
+                xdr.send();
+            },
+            abort: function() {
+                if(xdr)xdr.abort();
+            }
+        };
+    }
+});
+
 //GET USER'S LOCATION
 function getLocation() {
 	if (navigator.geolocation) {
@@ -31,7 +66,20 @@ function setupFacebook() {
             if (response.status === 'connected') {
                 // user logged in and linked to app
                 // handle this case HERE
-                alert("User logged in and connected");
+                var uid = response.authResponse.userID;
+                var accessToken = response.authResponse.accessToken;
+                var apiUrl = "https://graph.facebook.com/v2.3/"+
+                    uid+"?access-token="+accessToken+"?callback=?";
+                alert("User logged in and connected. getting "+apiUrl);
+                $.getJSON( apiUrl, function( data ) {
+                    var fbUser = {};
+                    fbUser.full_name = data.name;
+                    fbUser.email = data.email;
+                    fbUser.username = email.split('@|\\')[0];
+                    sessionStorage.setItem("currentUser", JSON.stringify(fbUser));
+                    window.location = './profile/profile.html';
+
+                }, onLoadJSONP);
             }
         });
 	};
