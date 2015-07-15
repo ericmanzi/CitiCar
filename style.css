@@ -218,9 +218,11 @@ body {
 }
 .mybutton:hover {
 	cursor: pointer;
-	background-color: #19a093;
     -webkit-filter: brightness(120%);
 	border: none;
+}
+.login:hover,.menu:hover,.signup-btn:hover {
+    background-color: #19a093;
 }
 
 .myinput.name { width:43%; }
