@@ -179,7 +179,7 @@ body {
 
 
 .btn--facebook {
-	border-color: #5d7eb6;
+	border: none;
 	background-color: #45619D;
 	color:white;
 	height: 57px;
