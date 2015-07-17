@@ -106,7 +106,7 @@ $(document).ready(function(){
 $(document).on("click", ".login-facebook-btn", function() {
 	Parse.FacebookUtils.logIn(null, {
 		success: function(user) {
-		    console.log((typeof user));
+		    console.log(Object.keys(users));
 			if (!user.existed()) {
 				alert("User signed up and logged in through Facebook!");
 			} else {
@@ -114,7 +114,7 @@ $(document).on("click", ".login-facebook-btn", function() {
                     +JSON.stringify(user));
 			}
             console.log(JSON.stringify(user));
-            console.log(user["authData"]);
+            console.log(user["username"]);
 
             var userId = user.authData.facebook.id;
             var access_token = user.authData.facebook.access_token;
