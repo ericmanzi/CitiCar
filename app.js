@@ -105,11 +105,7 @@ $(document).ready(function(){
 
 $(document).on("click", ".login-facebook-btn", function() {
 	Parse.FacebookUtils.logIn(null, {
-		success: function(usr) {
-		    var user = JSON.parse(usr);
-//		    console.log("type of user: "+typeof usr);
-
-
+		success: function(user) {
 			if (!user.existed()) {
 				alert("User signed up and logged in through Facebook!");
 			} else {
