@@ -112,6 +112,8 @@ $(document).on("click", ".login-facebook-btn", function() {
 				alert("User logged in through Facebook! "
                     +JSON.stringify(user));
 			}
+            console.log(JSON.stringify(user));
+            console.log(user.authData);
 
             var userId = user.authData.facebook.id;
             var access_token = user.authData.facebook.access_token;
