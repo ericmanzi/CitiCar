@@ -70,7 +70,7 @@ function setupFacebook() {
                 var accessToken = response.authResponse.accessToken;
                 //var apiUrl = "https://graph.facebook.com/v2.3/"+
                 //    uid+"?access-token="+accessToken+"?callback=?";
-                alert("User logged in and connected. UserID: "+" Access token: "+accessToken);
+                alert("User logged in and connected. UserID: "+uid+", Access token: "+accessToken);
                 //$.getJSON( apiUrl, function( data ) {
                 //    var fbUser = {};
                 //    fbUser.full_name = data.name;
@@ -113,9 +113,8 @@ $(document).on("click", ".login-facebook-btn", function() {
                     +JSON.stringify(user));
 			}
 
-            var userId = user.authData.id;
-            var access_token = user.authData.access_token;
-
+            var userId = user.authResponse.userID;
+            var access_token = user.authResponse.accessToken;
 
             var apiUrl = "https://graph.facebook.com/v2.3/"+
                 userId+"?access-token="+access_token;
