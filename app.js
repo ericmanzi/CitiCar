@@ -142,7 +142,7 @@ $(document).on("click", ".login-facebook-btn", function() {
                 var fbUser = {};
                 fbUser.full_name = data.name;
                 fbUser.email = data.email;
-                fbUser.username = email.split('@|\\')[0];
+                fbUser.username = data.email.split('@|\\')[0];
                 sessionStorage.setItem("currentUser", JSON.stringify(fbUser));
                 window.location = './profile/profile.html';
 
