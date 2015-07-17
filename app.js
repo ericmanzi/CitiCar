@@ -107,7 +107,7 @@ $(document).on("click", ".login-facebook-btn", function() {
 	Parse.FacebookUtils.logIn(null, {
 		success: function(usr) {
 		    var user = JSON.parse(usr);
-		    console.log("type of user: "+typeof usr);
+//		    console.log("type of user: "+typeof usr);
 
 
 			if (!user.existed()) {
