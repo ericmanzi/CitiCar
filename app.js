@@ -106,19 +106,34 @@ $(document).ready(function(){
 $(document).on("click", ".login-facebook-btn", function() {
 	Parse.FacebookUtils.logIn(null, {
 		success: function(user) {
-		    console.log(user.id);
-		    console.log(user._sessionToken);
 			if (!user.existed()) {
 				alert("User signed up and logged in through Facebook!");
 			} else {
 				alert("User logged in through Facebook! "
                     +JSON.stringify(user));
 			}
-            console.log(JSON.stringify(user));
-            console.log(user["username"]);
 
-            var userId = user.authData.facebook.id;
-            var access_token = user.authData.facebook.access_token;
+            var userString = JSON.stringify(user);
+
+            ////////// START REGEX
+            var access_reg = /access_token":".*/;
+            var exp_reg = /expiration/;
+
+            var at_start = userString.search(access_reg);
+            var at_end = userString.search(exp_reg);
+
+            var access_token = userString.substring(at_start+15, at_end-3);
+
+            var id_reg = /\"id\"/;
+            var obj_reg = /objectId/;
+
+            var id_start = userString.search(id_reg);
+            var id_end = userString.search(obj_reg);
+
+            var userId = userString.substring(id_start+6, id_end-5);
+            //////////// END REGEX
+
+            console.log("REGEX - userID: "+userId+", token: "+access_token);
 
             var apiUrl = "https://graph.facebook.com/v2.3/"+
                 userId+"?access-token="+access_token;
