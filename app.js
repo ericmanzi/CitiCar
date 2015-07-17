@@ -106,6 +106,7 @@ $(document).ready(function(){
 $(document).on("click", ".login-facebook-btn", function() {
 	Parse.FacebookUtils.logIn(null, {
 		success: function(user) {
+		    console.log((typeof user));
 			if (!user.existed()) {
 				alert("User signed up and logged in through Facebook!");
 			} else {
