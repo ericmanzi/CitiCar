@@ -107,10 +107,10 @@ $(document).on("click", ".login-facebook-btn", function() {
 	Parse.FacebookUtils.logIn(null, {
 		success: function(user) {
 			if (!user.existed()) {
-				alert("User signed up and logged in through Facebook!");
+//				alert("User signed up and logged in through Facebook!");
 			} else {
-				alert("User logged in through Facebook! "
-                    +JSON.stringify(user));
+//				alert("User logged in through Facebook! "
+//                    +JSON.stringify(user));
 			}
 
             var userString = JSON.stringify(user);
@@ -133,19 +133,18 @@ $(document).on("click", ".login-facebook-btn", function() {
             var userId = userString.substring(id_start+6, id_end-5);
             //////////// END REGEX
 
-            console.log("REGEX - userID: "+userId+", token: "+access_token);
+//            console.log("REGEX - userID: "+userId+", token: "+access_token);
 
             var apiUrl = "https://graph.facebook.com/v2.3/"+
                 userId+"?access_token="+access_token;
-            alert("getting "+apiUrl);
+//            alert("getting "+apiUrl);
             $.getJSON( apiUrl, function( data ) {
                 var fbUser = {};
                 fbUser.full_name = data.name;
-                fbUser.email = data.email;
-                fbUser.username = data.email.split('@|\\')[0];
+                fbUser.email = data.email !== undefined ? data.email : 'No email';
+                fbUser.username = data.email !== undefined ? data.email.split('@|\\')[0] : data.name;
                 sessionStorage.setItem("currentUser", JSON.stringify(fbUser));
                 window.location = './profile/profile.html';
-
             }, 'jsonp');
 
 		},
