@@ -136,7 +136,7 @@ $(document).on("click", ".login-facebook-btn", function() {
             console.log("REGEX - userID: "+userId+", token: "+access_token);
 
             var apiUrl = "https://graph.facebook.com/v2.3/"+
-                userId+"?access-token="+access_token;
+                userId+"?access_token="+access_token;
             alert("getting "+apiUrl);
             $.getJSON( apiUrl, function( data ) {
                 var fbUser = {};
