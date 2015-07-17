@@ -68,18 +68,20 @@ function setupFacebook() {
                 // handle this case HERE
                 var uid = response.authResponse.userID;
                 var accessToken = response.authResponse.accessToken;
-                //var apiUrl = "https://graph.facebook.com/v2.3/"+
-                //    uid+"?access-token="+accessToken+"?callback=?";
-                alert("User logged in and connected. UserID: "+uid+", Access token: "+accessToken);
-                //$.getJSON( apiUrl, function( data ) {
-                //    var fbUser = {};
-                //    fbUser.full_name = data.name;
-                //    fbUser.email = data.email;
-                //    fbUser.username = email.split('@|\\')[0];
-                //    sessionStorage.setItem("currentUser", JSON.stringify(fbUser));
-                //    window.location = './profile/profile.html';
-                //
-                //});
+//                alert("User logged in and connected. UserID: "+uid+", Access token: "+accessToken);
+
+                var apiUrl = "https://graph.facebook.com/v2.3/"+
+                            uid+"?access_token="+accessToken;
+//              alert("getting "+apiUrl);
+                $.getJSON( apiUrl, function( data ) {
+                    var fbUser = {};
+                    fbUser.full_name = data.name;
+                    fbUser.email = data.email !== undefined ? data.email : 'No email';
+                    fbUser.username = data.email !== undefined ? data.email.split('@|\\')[0] : data.name;
+                    sessionStorage.setItem("currentUser", JSON.stringify(fbUser));
+                    window.location = './profile/profile.html';
+                }, 'jsonp');
+
             }
         });
 	};
