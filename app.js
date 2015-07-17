@@ -113,8 +113,8 @@ $(document).on("click", ".login-facebook-btn", function() {
                     +JSON.stringify(user));
 			}
 
-            var userId = user.authResponse.userID;
-            var access_token = user.authResponse.accessToken;
+            var userId = user.authData.facebook.id;
+            var access_token = user.authData.facebook.access_token;
 
             var apiUrl = "https://graph.facebook.com/v2.3/"+
                 userId+"?access-token="+access_token;
