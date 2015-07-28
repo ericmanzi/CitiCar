@@ -2,39 +2,39 @@ var lat=0.0;
 var long=0.0;
 
 //ALLOW CROSS ORIGIN REQUESTS
-jQuery.support.cors = true;
-$.ajaxTransport("+*", function( options, originalOptions, jqXHR ) {
-    if(jQuery.browser.msie && window.XDomainRequest) {
-        var xdr;
-        return {
-            send: function( headers, completeCallback ) {
-                // Use Microsoft XDR
-                xdr = new XDomainRequest();
-                xdr.open("get", options.url);
-                xdr.onload = function() {
-                    if(this.contentType.match(/\/xml/)){
-                        var dom = new ActiveXObject("Microsoft.XMLDOM");
-                        dom.async = false;
-                        dom.loadXML(this.responseText);
-                        completeCallback(200, "success", [dom]);
-                    }else{
-                        completeCallback(200, "success", [this.responseText]);
-                    }
-                };
-                xdr.ontimeout = function(){
-                    completeCallback(408, "error", ["The request timed out."]);
-                };
-                xdr.onerror = function(){
-                    completeCallback(404, "error", ["The requested resource could not be found."]);
-                };
-                xdr.send();
-            },
-            abort: function() {
-                if(xdr)xdr.abort();
-            }
-        };
-    }
-});
+//jQuery.support.cors = true;
+//$.ajaxTransport("+*", function( options, originalOptions, jqXHR ) {
+//    if(jQuery.browser.msie && window.XDomainRequest) {
+//        var xdr;
+//        return {
+//            send: function( headers, completeCallback ) {
+//                // Use Microsoft XDR
+//                xdr = new XDomainRequest();
+//                xdr.open("get", options.url);
+//                xdr.onload = function() {
+//                    if(this.contentType.match(/\/xml/)){
+//                        var dom = new ActiveXObject("Microsoft.XMLDOM");
+//                        dom.async = false;
+//                        dom.loadXML(this.responseText);
+//                        completeCallback(200, "success", [dom]);
+//                    }else{
+//                        completeCallback(200, "success", [this.responseText]);
+//                    }
+//                };
+//                xdr.ontimeout = function(){
+//                    completeCallback(408, "error", ["The request timed out."]);
+//                };
+//                xdr.onerror = function(){
+//                    completeCallback(404, "error", ["The requested resource could not be found."]);
+//                };
+//                xdr.send();
+//            },
+//            abort: function() {
+//                if(xdr)xdr.abort();
+//            }
+//        };
+//    }
+//});
 
 //GET USER'S LOCATION
 function getLocation() {
@@ -68,18 +68,20 @@ function setupFacebook() {
                 // handle this case HERE
                 var uid = response.authResponse.userID;
                 var accessToken = response.authResponse.accessToken;
-                //var apiUrl = "https://graph.facebook.com/v2.3/"+
-                //    uid+"?access-token="+accessToken+"?callback=?";
-                alert("User logged in and connected. UserID: "+" Access token: "+accessToken);
-                //$.getJSON( apiUrl, function( data ) {
-                //    var fbUser = {};
-                //    fbUser.full_name = data.name;
-                //    fbUser.email = data.email;
-                //    fbUser.username = email.split('@|\\')[0];
-                //    sessionStorage.setItem("currentUser", JSON.stringify(fbUser));
-                //    window.location = './profile/profile.html';
-                //
-                //});
+//                alert("User logged in and connected. UserID: "+uid+", Access token: "+accessToken);
+
+                var apiUrl = "https://graph.facebook.com/v2.3/"+
+                            uid+"?access_token="+accessToken;
+//              alert("getting "+apiUrl);
+                $.getJSON( apiUrl, function( data ) {
+                    var fbUser = {};
+                    fbUser.full_name = data.name;
+                    fbUser.email = data.email !== undefined ? data.email : 'No email';
+                    fbUser.username = data.email !== undefined ? data.email.split('@|\\')[0] : data.name;
+                    sessionStorage.setItem("currentUser", JSON.stringify(fbUser));
+                    window.location = './profile/profile.html';
+                }, 'jsonp');
+
             }
         });
 	};
@@ -107,27 +109,44 @@ $(document).on("click", ".login-facebook-btn", function() {
 	Parse.FacebookUtils.logIn(null, {
 		success: function(user) {
 			if (!user.existed()) {
-				alert("User signed up and logged in through Facebook!");
+//				alert("User signed up and logged in through Facebook!");
 			} else {
-				alert("User logged in through Facebook! "
-                    +JSON.stringify(user));
+//				alert("User logged in through Facebook! "
+//                    +JSON.stringify(user));
 			}
 
-            var userId = user.authData.id;
-            var access_token = user.authData.access_token;
+            var userString = JSON.stringify(user);
 
+            ////////// START REGEX
+            var access_reg = /access_token":".*/;
+            var exp_reg = /expiration/;
+
+            var at_start = userString.search(access_reg);
+            var at_end = userString.search(exp_reg);
+
+            var access_token = userString.substring(at_start+15, at_end-3);
+
+            var id_reg = /\"id\"/;
+            var obj_reg = /objectId/;
+
+            var id_start = userString.search(id_reg);
+            var id_end = userString.search(obj_reg);
+
+            var userId = userString.substring(id_start+6, id_end-5);
+            //////////// END REGEX
+
+//            console.log("REGEX - userID: "+userId+", token: "+access_token);
 
             var apiUrl = "https://graph.facebook.com/v2.3/"+
-                userId+"?access-token="+access_token;
-            alert("getting "+apiUrl);
+                userId+"?access_token="+access_token;
+//            alert("getting "+apiUrl);
             $.getJSON( apiUrl, function( data ) {
                 var fbUser = {};
                 fbUser.full_name = data.name;
-                fbUser.email = data.email;
-                fbUser.username = email.split('@|\\')[0];
+                fbUser.email = data.email !== undefined ? data.email : 'No email';
+                fbUser.username = data.email !== undefined ? data.email.split('@|\\')[0] : data.name;
                 sessionStorage.setItem("currentUser", JSON.stringify(fbUser));
                 window.location = './profile/profile.html';
-
             }, 'jsonp');
 
 		},

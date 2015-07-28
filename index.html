@@ -1,41 +1,115 @@
 <!DOCTYPE html>
 <html lang="en-US" ><head>
 
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>CitiCar</title>
-  <meta name="description" content="Welcome to Citicar. Rwanda's first car sharing service. Need a car for a few hours to drive around Kigali? Reserve your car and take her out for a spin. We are an affordable alternative to Taxi's and personal cars.">
-  <meta name="viewport" content="width=device-width">
-  <meta name="HandheldFriendly" content="True">
-  <meta name="MobileOptimized" content="320">
-  <meta http-equiv="cleartype" content="on">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>CitiCar</title>
+    <meta name="description" content="Welcome to Citicar. Rwanda's first car sharing service. Need a car for a few hours to drive around Kigali? Reserve your car and take her out for a spin. We are an affordable alternative to Taxi's and personal cars.">
+    <meta name="viewport" content="width=device-width">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta http-equiv="cleartype" content="on">
 
-  <!-- scripts -->
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
-  <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
-  <!--<script type="text/javascript" src="app.js"></script>-->
+    <!-- scripts -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.3/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
+    <!--<script type="text/javascript" src="app.js"></script>-->
 
-  <!-- Stylesheets -->
-  <link rel="stylesheet" type="text/css" href="style.css">
-
-
+    <!-- Stylesheets -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" type="text/css" href="footer.css">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
 
 <body class="cover">
 
 <div class="header">
-  <button class="menu mybutton"><img src="images/menu.png" height="18px" width="25px"> MENU</button>
-  <div class="logo logo-line">CitiCar</div>
-  <button class="login mybutton" type="submit" onclick="location.href='login.html'">LOG IN</button>
+    <button class="menu mybutton menu-open" onclick="$('.l-menu').addClass('open'); $('.menu-close').addClass('visible');">
+        <img src="images/menu.png" height="18px" width="25px"> MENU</button>
+    <button class="menu mybutton menu-close" onclick="$('.l-menu').removeClass('open'); $('.menu-close').removeClass('visible');">
+        <img src="images/close.svg" height="18px" width="18px"> HIDE</button>
+    <div class="logo logo-line">CitiCar</div>
+    <button class="login mybutton" type="submit" onclick="location.href='login.html'">LOG IN</button>
+</div>
+
+<div class="l-menu">
+    <div style="height: 100px"></div>
+    <div class="menu-item">Home</div>
+    <div class="menu-item">About</div>
+    <div class="menu-item">FAQ</div>
+    <div class="menu-item">Pricing</div>
+    <div class="menu-item">Contact</div>
 </div>
 
 <div id="signup">
-  <p class="title">KIGALI'S FIRST CAR SHARING SERVICE</p>
-  <p class="subtitle">NEED A CAR FOR A FEW HOURS TO DRIVE AROUND KIGALI?</p>
-  <br />
-  <button class="signup-btn mybutton" id="sign-up" type='submit' onclick="location.href='signup.html'">SIGN UP</button>
+
+    <p class="title">KIGALI'S FIRST CAR SHARING SERVICE</p>
+    <p class="subtitle">NEED A CAR FOR A FEW HOURS TO DRIVE AROUND KIGALI?</p>
+    <br />
+    <button class="signup-btn mybutton" id="sign-up" type='submit' onclick="location.href='signup.html'">SIGN UP</button>
+    <br /><br />
+    <button class="round" type="button" onclick="$('html, body').animate({scrollTop: $('#about').offset().top}, 1000);">
+        <span class="fa fa-angle-down"></span></button>
 
 </div>
+
+<div id="about">
+    <h1><strong>ABOUT CITICAR</strong></h1>
+    <p>
+        Car sharing makes personal vehicles affordable, accessible to all and safe for the city in the long term.
+    </p>
+    <p>
+        Thanks to cool technology, and forward-thinking entrepreneurs, we are redefining the way Kigali
+        thinks about alternative transportation.
+    </p>
+    <p>
+        CITICAR is a transplant of the American concept ZIPCAR, which has also been duplicated in South Africa as LOCOMUTE.
+        In Kigali, CITICAR will have designated locations around Kigali where the cars will be parked.
+        Gaining access to car will be as simple as 4 steps.
+    <ol>
+        <li>Clients will subscribe to the service prior to getting started.</li>
+        <li>Once subscribed, the CITICAR member will  book a car from one of our locations</li>
+        <li>Pick up the vehicle</li>
+        <li>Return the vehicle.</li>
+    </ol></p>
+    <p>
+        This transaction will be automated from start to finish, which makes it efficient.
+        CITICAR is also an affordable solution for businesses and various organizations in Kigali.
+    </p>
+</div>
+
+<!--BEGIN FOOTER-->
+<footer class="footer-distributed">
+    <div class="footer-left">
+        <span class="logo-footer">CitiCar</span>
+        <p class="footer-links">
+            <a href="#">Home</a> ·
+            <a href="#">About</a> ·
+            <a href="#">Faq</a> ·
+            <a href="#">Contact</a> ·
+            <a href="#">Privacy Policy</a>
+        </p>
+        <p class="footer-company-name">CitiCar &copy; 2015</p>
+    </div>
+    <div class="footer-center">
+        <div><i class="fa fa-map-marker"></i><p><span>1113 Chiswell lane</span> Silver Spring, Maryland 20901, USA</p></div>
+        <div><i class="fa fa-phone"></i><p><a href="tel:+16177589521">617 758 9521</a></p></div>
+        <div><i class="fa fa-envelope"></i><p><a href="mailto:support@company.com">support@citicar.com</a></p></div>
+    </div>
+    <div class="footer-right">
+        <p class="footer-company-about">
+            <span>About the company</span>
+            Thanks to cool technology, and forward-thinking entrepreneurs, we are redefining the way Kigali thinks about alternative transportation.
+        </p>
+        <div class="footer-icons">
+            <a href="#"><i class="fa fa-facebook"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-google-plus-square"></i></a>
+            <a href="#"><i class="fa fa-linkedin"></i></a>
+        </div>
+    </div>
+</footer>
+<!--END FOOTER-->
 
 </body></html>
