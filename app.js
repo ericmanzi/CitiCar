@@ -132,7 +132,7 @@ $(document).on("click", ".login-facebook-btn", function() {
 
 		},
 		error: function(user, error) {
-			//alert(JSON.stringify(error));
+			alert(JSON.stringify(error));
 		}
 	});
 });
