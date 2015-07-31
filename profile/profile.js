@@ -1,4 +1,32 @@
+var cars;
+
 $(document).ready(function(){
+    Parse.initialize("MJ7veguTqdNXV8bF0x5IB6fAItT3gK22B5mrtzxD", "LrbtNhaspWUt86vml7TFS6gn3XSsezNjr8NLst4p");
+
+    var selectedCar = '';
+    var selectCar = function(name) {
+        selectedCar = name;
+    };
+
+    var Car = Parse.Object.extend("Car");
+    var query = new Parse.Query(Car);
+    query.find({
+        success: function(_cars_) {
+            cars = _cars_;
+            //for (var i=0; i<cars.length; i++) {
+            //    console.log(cars[i].get("Name")+" reserved by "+cars[i].get("ReservedBy"));
+            //}
+            for (var i=0; i<cars.length; i++) {
+                var carname=cars[i].get("Name");
+                var open = '<li><a href="#" ';
+                var onclick = 'onclick="selectCar("'+carname+'")"';
+                var close = '>'+carname+'</a></li>';
+                //$('ul.dropdown-menu').append('<li><a href="#" onclick="selectCar('+carname+')">'+carname+'</a></li>');
+                $('ul.dropdown-menu').append(open+onclick+close);
+            }
+        }
+    });
+
     $(document).on("focus blur", "#pickup_time", function() {
         $('#pickup_time').datetimepicker();
     });
@@ -17,8 +45,29 @@ $(document).ready(function(){
         var pickup_time = $('#pickup_time').data('DateTimePicker').date();
         var return_time_text = $('#return_time').val();
         var return_time = $('#return_time').data('DateTimePicker').date();
-        var failMsg = 'Sorry, unable to reserve your car from '+pickup_time_text+' to '+return_time_text;
-        alert(failMsg);
+
+        //get current user
+        var user = JSON.parse(sessionStorage.getItem('currentUser'));
+
+        //get current car object
+        query.equalTo("Name", selectedCar);
+        query.first({
+            success: function(carObj) {
+                //set current car object reservedBy to current user
+                carObj.set("reservedBy", user.objectId);
+                //set current car pickup and return time
+                carObj.set("pickupTime", pickup_time);
+                carObj.set("returnTime", return_time);
+                alert("You have reserved "+selectedCar+" from "+pickup_time_text+" to "+return_time_text);
+            },
+            error: function(error) {
+                alert("Error: " + error.code + " " + error.message);
+            }
+        });
+
+
+        //var failMsg = 'Sorry, unable to reserve your car from '+pickup_time_text+' to '+return_time_text;
+        //alert(failMsg);
     });
     var mapCanvas = $('#map-canvas');
     var mapCanvas = document.getElementById('map-canvas');
@@ -80,8 +129,14 @@ app.controller('ProfileCtrl', function() {
 
     //TODO: list all available cars. These should be obtained from Parse later
     self.availableCars = [
+<<<<<<< HEAD
      "Nissan B203948", "Toyota Corona 0918", "Toyota Camry 23049", "Mitsubishi v09384", "BMW v09813", "Mitsubishi VX09121", "Toyota B2340"
+=======
+        "Nissan B203948", "Toyota Corona 0918", "Toyota Camry 23049", "Mitsubishi v09384", "BMX v09813", "Mitsubishi VX09121", "Toyota B2340"
+>>>>>>> 8ccc6e969218981d4855ece6ebfb0a31741d50a3
     ];
+
+    self.availableCars = cars;
 
     self.selectedCar = null;
 
@@ -106,7 +161,7 @@ app.controller('ProfileCtrl', function() {
     self.scrollToDiv = function(id) {
         $('html, body').animate({
             scrollTop: $(id).offset().top
-            }, 1000);
+        }, 1000);
     };
 
 
