@@ -2,9 +2,16 @@ $(document).ready(function(){
     $(document).on("focus blur", "#pickup_time", function() {
         $('#pickup_time').datetimepicker();
     });
+    $(document).on("click", "#pickup", function() {
+        $('#pickup_time').datetimepicker();
+    });
     $(document).on("focus blur", "#return_time", function() {
         $('#return_time').datetimepicker();
     });
+    $(document).on("click", "#return", function() {
+        $('#return_time').datetimepicker();
+    });
+
     $(document).on("click", "#reserveBtn", function() {
         var pickup_time_text = $('#pickup_time').val();
         var pickup_time = $('#pickup_time').data('DateTimePicker').date();
@@ -13,6 +20,44 @@ $(document).ready(function(){
         var failMsg = 'Sorry, unable to reserve your car from '+pickup_time_text+' to '+return_time_text;
         alert(failMsg);
     });
+    var mapCanvas = $('#map-canvas');
+    var mapCanvas = document.getElementById('map-canvas');
+    var mapOptions = {
+        center: new google.maps.LatLng(-1.9520014,30.1024535),
+        zoom: 13,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+    var map = new google.maps.Map(mapCanvas, mapOptions);
+
+    var locations = [
+        {name: 'Nissan B09282', lat: -1.962004, long: 30.133800},
+        {name: 'BMW RW282', lat: -1.940671, long: 30.103047},
+        {name: 'Toyota Corona RAB129', lat: -1.945049, long: 30.062500}
+    ];
+    var markerIcon = {
+        url: "../images/pin-car.png",
+        scaledSize: new google.maps.Size(30, 70),
+        origin: new google.maps.Point(0,0),
+        anchor: new google.maps.Point(0, 0)
+    };
+    var infowindow = new google.maps.InfoWindow();
+    var marker, i;
+
+    for (i = 0; i < locations.length; i++) {
+        marker = new google.maps.Marker({
+            position: new google.maps.LatLng(locations[i].lat, locations[i].long),
+            map: map,
+            icon: markerIcon
+        });
+
+        google.maps.event.addListener(marker, 'click', (function(marker, i) {
+            return function() {
+                infowindow.setContent(locations[i].name);
+                infowindow.open(map, marker);
+            }
+        })(marker, i));
+    }
+
 });
 
 
@@ -26,14 +71,16 @@ app.controller('ProfileCtrl', function() {
     self.return_time = 0.0;
 
     if (self.user===undefined || self.user===null) {
-        window.location = "../login.html";
+//        window.location = "../login.html";
     } else {
         self.currentView = "reserve";
     }
+            self.currentView = "reserve";
+
 
     //TODO: list all available cars. These should be obtained from Parse later
     self.availableCars = [
-     "Nissan B203948", "Toyota Corona 0918", "Toyota Camry 23049", "Mitsubishi v09384", "BMX v09813", "Mitsubishi VX09121", "Toyota B2340"
+     "Nissan B203948", "Toyota Corona 0918", "Toyota Camry 23049", "Mitsubishi v09384", "BMW v09813", "Mitsubishi VX09121", "Toyota B2340"
     ];
 
     self.selectedCar = null;
